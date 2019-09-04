@@ -21,10 +21,7 @@ if( !config.token )
 console.log(chalk.green(`Your token is: ${config.token.substring(0,4)}...`));
 
 (async () => {
-    ////// UPDATE WITH YOUR username!:
-    var userId = "chrisparnin";
-
-    await listRepos(userId);
+    await listAuthenicatedUserRepos();
     //await listBranches(userId, "your repo");
     //await createRepo(userId,newrepo);
     //await createIssue(userId, repo, issue);
@@ -32,11 +29,11 @@ console.log(chalk.green(`Your token is: ${config.token.substring(0,4)}...`));
 
 })()
 
-function listRepos(userName)
+function listAuthenicatedUserRepos()
 {
 
 	var options = {
-		url: urlRoot + '/users/' + userName + "/repos",
+		url: urlRoot + "/user/repos",
 		method: 'GET',
 		headers: {
 			"User-Agent": "CSC510-REST-WORKSHOP",
