@@ -183,17 +183,72 @@ Tips for extending.
 * You need `--data` when using POST/PATCH, that will be the data sent to the server.
 
 
-### 2. With a partner
+### 3. With a partner
 
 Do the following tasks with a partner. For each task, consider what's the right HTTP VERB, the REST API url, and what part of the response body should you print out?
 
 * Write code for listBranches in a given repo under an owner. See [list branches](https://developer.github.com/v3/repos/#list-branches)
 * Write code for [create a new repo](https://developer.github.com/v3/repos/#create)
 
-### 3. On your own
+### 4. On your own
 
 Do the following tasks, on your own:
 
 * Write code for [creating an issue](https://developer.github.com/v3/issues/#create-an-issue) for an existing repo.
 * Write code for [editing a repo](https://developer.github.com/v3/repos/#edit) to enable wiki support.
 
+
+## A Simple REST Server
+
+Let's practice creating a simple REST server!
+
+We will be working in the `server/` directory.
+
+```bash
+cd server/
+```
+
+Install packages (express)
+
+```
+npm install
+```
+
+Start the server
+
+```bash
+node index.js
+```
+
+Send a simple GET request, and get a response!
+
+```bash
+$ curl --request GET http://localhost:3000/
+Hello World!
+```
+
+Send a simple POST request with data:
+
+```bash
+$ curl --request POST -H "Content-Type: application/json" --data '{"coffee":1,"milk":1,"sugar":1,"chocolate":1}' http://localhost:3000/
+Received object. {"coffee":1,"milk":1,"sugar":1,"chocolate":1}
+```
+
+### Create a simple one-time sharing service
+
+* POST an json object to `/share/`. Return an url with unique retrieval id
+* GET the given `/<id>`. Retrieve the object. Further updates should return an error.
+
+You should be able to test your code using the following sequences of commands.
+
+```bash
+# Post content to server. Service returns retrieval link.
+$ curl --request POST -H "Content-Type: application/json" --data '{"coffee":1,"milk":1,"sugar":1,"chocolate":1}' http://localhost:3000/share
+{"success":true,"link":"http://localhost:3000/pgiPc2"}
+# Retrieve content
+$ curl http://localhost:3000/pgiPc2
+{"coffee":1,"milk":1,"sugar":1,"chocolate":1}
+# A second read will result in "Not Found" message.
+$ curl http://localhost:3000/pgiPc2
+{"success":false,"error":404,"message":"Not Found"}
+```

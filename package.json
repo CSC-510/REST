@@ -2,7 +2,7 @@
   "name": "csc510-rest-workshop",
   "version": "1.0.0",
   "description": "Practice with REST concepts.",
-  "main": "script.js",
+  "main": "index.js",
   "keywords": [
     "REST"
   ],
