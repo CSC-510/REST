@@ -41,7 +41,7 @@ function listRepos(userName)
 		headers: {
 			"User-Agent": "CSC510-REST-WORKSHOP",
 			"content-type": "application/json",
-			"Authorization": `token: ${config.token}`
+			"Authorization": `token ${config.token}`
 		}
 	};
 
