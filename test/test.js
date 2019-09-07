@@ -21,7 +21,7 @@ describe("GitHub EndPoint Tests", function() {
     it("listBranches returns list branches", async function() {
         
       let user  = await github.getUser();
-      let repos = await github.listBranches(user,"EngineeringBasics");
+      let repos = await github.listBranches(user,"HW1-510");
       expect(repos).to.be.an('array').that.have.nested.property("[0].name").equals("master");
 
     });
