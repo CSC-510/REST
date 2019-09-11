@@ -2,10 +2,9 @@ var chai   = require('chai');
 var assert = chai.assert,
     expect = chai.expect;
 
-
+process.env.NODE_ENV = 'test'
 var github = require('../index');
 
-process.env.NODE_ENV = 'test'
 // Turn off logging
 console.log = function(){};
 
